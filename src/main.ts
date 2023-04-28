@@ -1,6 +1,10 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-// import 'lib-flexible/flexible'
-
 import 'amfe-flexible'
-createApp(App).mount('#app')
+import './style.css'
+
+import router from './router/index.js'
+
+const app = createApp(App)
+app.use(router)
+app.mount('#app')

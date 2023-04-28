@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@element-plus/icons": "^0.0.11",
+    "@element-plus/icons-vue": "^2.1.0",
     "@types/node": "^18.16.2",
     "amfe-flexible": "^2.2.1",
     "element-plus": "^2.3.4",
@@ -21,8 +23,10 @@
     "style-loader": "^3.3.2",
     "tslib": "^2.5.0",
     "unplugin-auto-import": "^0.15.3",
+    "unplugin-icons": "^0.16.1",
     "unplugin-vue-components": "^0.24.1",
     "vue": "^3.2.47",
+    "vue-router": "^4.1.6",
     "webpack": "5.0.0"
   },
   "devDependencies": {

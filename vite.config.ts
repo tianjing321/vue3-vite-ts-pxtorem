@@ -4,6 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import IconsResolver from 'unplugin-icons/resolver'
 import postcssPluginPx2rem from "postcss-plugin-px2rem"
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,11 +13,18 @@ export default defineConfig({
       vue(),
       //element-plus 按需导入
       AutoImport({
-        resolvers: [ElementPlusResolver({
-          // 自动引入修改主题色添加这一行，使用预处理样式，不添加将会导致使用ElMessage，ElNotification等组件时默认的主题色会覆盖自定义的主题色
-          importStyle: "sass",
-        }
-        )],
+        imports: ['vue'],
+        resolvers: [
+          ElementPlusResolver({
+            // 自动引入修改主题色添加这一行，使用预处理样式，不添加将会导致使用ElMessage，ElNotification等组件时默认的主题色会覆盖自定义的主题色
+            importStyle: "sass",
+          }),
+          // 自动导入图标组件
+          IconsResolver({
+            prefix: 'Icon',
+          }),
+        ],
+
       }),
       Components({
         resolvers: [ElementPlusResolver({
@@ -30,7 +38,7 @@ export default defineConfig({
     preprocessorOptions: {
       //导入scss全局样式
       scss: {
-        additionalData: `@use "./src/styles/element.scss" as *;`,
+        additionalData: `@use "./src/styles/index.scss" as *;`,
         // javascriptEnabled: true
       },
     },
